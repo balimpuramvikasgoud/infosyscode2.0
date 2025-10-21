@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sentiment Analyzer</title>
-  <link rel="stylesheet" href="/static/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis Engine</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>VADER + TextBlob Sentiment Analyzer</h1>
-    <textarea id="inputText" placeholder="Enter your text here..."></textarea>
-    <button onclick="analyzeSentiment()">Analyze</button>
 
-    <div id="result" class="result-box"></div>
-  </div>
+    <header class="header">
+        <h1>Sentiment Analysis Engine</h1>
+    </header>
 
-  <script src="/static/script.js"></script>
+    <main class="container">
+        <div class="card" id="input-card">
+            <h2>Analyze New Input</h2>
+            <p>Enter text or upload a .txt / .csv file (with a 'reviewText' column).</p>
+            
+            <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <label for="fileInput" class="file-label">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span id="file-name">Upload a File (.txt or .csv)</span>
+            </label>
+            <input type="file" id="fileInput" accept=".txt,.csv" />
+            
+            <button id="analyzeButton">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Analyze
+            </button>
+        </div>
+
+        <div class="card" id="results-container">
+            
+            <div id="results-placeholder" class="placeholder">
+                <i class="fa-solid fa-chart-pie"></i>
+                <p>Results will appear here</p>
+            </div>
+            
+            <div id="loader-area" class="loader-container">
+                <div class="loader"></div>
+                <p>Analyzing...</p>
+            </div>
+
+            <div id="single-result-area"></div>
+            <div id="csv-result-area"></div>
+
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
 </body>
 </html>
